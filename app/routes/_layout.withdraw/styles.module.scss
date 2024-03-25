@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+}
+
+.card {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    width: 80vw;
+    max-width: 600px;
+}
+
+.title {
+    font-family:
+        Greycliff CF,
+        var(--mantine-font-family);
+    font-weight: 700;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--mantine-radius-md);
+    height: toRem(90px);
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+    transition:
+        box-shadow 150ms ease,
+        transform 100ms ease;
+
+    @mixin hover {
+        box-shadow: var(--mantine-shadow-md);
+        transform: scale(1.05);
+    }
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    margin-top: 6px;
+    background-color: #A90039;
+    border-radius: 8px;
+}

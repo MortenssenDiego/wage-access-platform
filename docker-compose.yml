@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  wage_db:
+    image: mongo
+    container_name: wage_db
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - mongo_data:/data/db
+  wage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wage
+    container_name: wage
+    restart: unless-stopped
+    environment:
+      - MONGODB_URL=mongodb://admin:admin@wage_db:27017/
+      - PORT=5173
+    ports:
+      - "5173:5173"
+    depends_on:
+      - wage_db
+
+volumes:
+  mongo_data: {}
